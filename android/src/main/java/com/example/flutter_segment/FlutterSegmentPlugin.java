@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.moengage.core.MoEngage;
+import com.moengage.core.model.IntegrationPartner;
 import com.segment.analytics.Analytics;
 import com.segment.analytics.AnalyticsContext;
 import com.segment.analytics.Properties;
@@ -96,7 +97,7 @@ public class FlutterSegmentPlugin implements MethodCallHandler, FlutterPlugin {
             if (isMoEngageIntegrationEnabled) {
                 analyticsBuilder.use(MoEngageIntegration.FACTORY);
                 MoEngage moEngage = new MoEngage.Builder((Application) this.applicationContext, moEngageApplicationKey)
-                        .enableSegmentIntegration()
+                        .enablePartnerIntegration(IntegrationPartner.SEGMENT)
                         .build();
                 MoEngage.initialise(moEngage);
             }
