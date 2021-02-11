@@ -72,8 +72,6 @@ public class FlutterSegmentPlugin implements MethodCallHandler, FlutterPlugin {
             Boolean trackApplicationLifecycleEvents = bundle.getBoolean("com.claimsforce.segment.TRACK_APPLICATION_LIFECYCLE_EVENTS");
             Boolean isAmplitudeIntegrationEnabled = bundle.getBoolean("com.claimsforce.segment.ENABLE_AMPLITUDE_INTEGRATION", false);
             Boolean isMixpanelIntegrationEnabled = bundle.getBoolean("com.claimsforce.segment.ENABLE_MIXPANEL_INTEGRATION", false);
-            Boolean isMoEngageIntegrationEnabled = bundle.getBoolean("com.claimsforce.segment.ENABLE_MO_ENGAGE_INTEGRATION", false);
-            String moEngageApplicationKey = bundle.getString("com.claimsforce.segment.MO_ENGAGE_APP_KEY", "");
             Boolean debug = bundle.getBoolean("com.claimsforce.segment.DEBUG", false);
 
             Analytics.Builder analyticsBuilder = new Analytics.Builder(applicationContext, writeKey);
@@ -92,14 +90,6 @@ public class FlutterSegmentPlugin implements MethodCallHandler, FlutterPlugin {
 
             if (isMixpanelIntegrationEnabled) {
                 analyticsBuilder.use(MixpanelIntegration.FACTORY);
-            }
-
-            if (isMoEngageIntegrationEnabled) {
-                analyticsBuilder.use(MoEngageIntegration.FACTORY);
-                MoEngage moEngage = new MoEngage.Builder((Application) this.applicationContext, moEngageApplicationKey)
-                        .enablePartnerIntegration(IntegrationPartner.SEGMENT)
-                        .build();
-                MoEngage.initialise(moEngage);
             }
 
             // Here we build a middleware that just appends data to the current context
