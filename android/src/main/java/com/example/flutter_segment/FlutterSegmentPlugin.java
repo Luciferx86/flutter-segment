@@ -9,8 +9,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.moengage.core.MoEngage;
-import com.moengage.core.model.IntegrationPartner;
 import com.segment.analytics.Analytics;
 import com.segment.analytics.AnalyticsContext;
 import com.segment.analytics.Properties;
@@ -20,7 +18,6 @@ import com.segment.analytics.Middleware;
 import com.segment.analytics.integrations.BasePayload;
 import com.segment.analytics.android.integrations.amplitude.AmplitudeIntegration;
 import com.segment.analytics.android.integrations.mixpanel.MixpanelIntegration;
-import com.segment.analytics.android.integrations.moengage.MoEngageIntegration;
 
 import static com.segment.analytics.Analytics.LogLevel;
 
